@@ -2,12 +2,12 @@ from urllib import request
 import math
 import time
 
-t = time.strftime("%Y-%m-%d", time.localtime())
+t = time.strftime("%Y-%m-%d_%H-%M-%S", time.localtime())
 
 # Getting fans list
 url = 'http://m.weibo.cn/page/pageJson?containerid=&containerid=230403_-_10080894a92ca39febc7c72d0d29606cddf0f0&title=%E7%B2%89%E4%B8%9D&uid=5412999676&from=feed&luicode=10000011&lfid=10730394a92ca39febc7c72d0d29606cddf0f0_-_ext_intro&v_p=11&ext=&fid=230403_-_10080894a92ca39febc7c72d0d29606cddf0f0&uicode=10000011&next_cursor=&page='
 f = open('Fans_Data_' + t + '.json' ,'w')
-for i in range(1,500):
+for i in range(1,501):
 	url1 = url + str(i)
 	print(i)
 	req = request.Request(url1)
@@ -21,13 +21,14 @@ for i in range(1,500):
 	response = request.urlopen(req)
 	data = response.read()
 	f.write(bytes.decode(data) + '\n')
+	time.sleep(0.5)
 
 f.close();
 
 #Getting discussion list
 url_ = 'http://m.weibo.cn/page/pageJson?containerid=10080894a92ca39febc7c72d0d29606cddf0f0&from=feed&containerid=100808topic&extparam=%E5%A4%A7%E5%AD%A6%E6%98%AF%E6%89%80%E6%95%B4%E5%AE%B9%E9%99%A2&v_p=11&ext=&fid=10080894a92ca39febc7c72d0d29606cddf0f0&uicode=10000011&next_cursor=&page='
 f = open('Discussion_Data_' + t + '.json','w')
-for i in range(1,100):
+for i in range(1,101):
 	url2 = url_ + str(i)
 	print(i)
 	req = request.Request(url2)
