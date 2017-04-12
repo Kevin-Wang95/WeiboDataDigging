@@ -40,7 +40,6 @@ def login_weibo(nick , pwd):
 
 
 
-login_weibo('18813119733' , '95102200')
 f = open('2016-05-27_16-47-31_user_id.txt', 'r')
 #f2 = open('Follower_info2.txt','wb')
 data = f.read()
